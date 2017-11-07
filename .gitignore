@@ -1,0 +1,5 @@
+# Ignore binaries.
+/bin
+
+.idea/
+docker-compose.yml

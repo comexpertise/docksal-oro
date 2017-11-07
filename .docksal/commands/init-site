@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+
+#: exec_target = cli
+
+## Initialize/reinstall site
+##
+## Usage: fin init-site
+
+# Abort if anything fails
+set -e
+
+#-------------------------- Settings --------------------------------
+# ORO_APP = orocrm|orocommerce|oroplatform
+ORO_APP="orocrm"
+ORO_APP_VERSION="2.4.2"
+# PROJECT_ROOT and DOCROOT are set as env variables in cli
+SITEDIR_PATH="${PROJECT_ROOT}/${DOCROOT}"
+APP_DIR="${SITEDIR_PATH}/.."
+
+#-------------------------- END: Settings --------------------------------
+
+#-------------------------- Functions --------------------------------
+
+# Fix file/folder permissions
+fix_permissions ()
+{
+	echo "Making app directory writable..."
+	chmod 755 "${SITEDIR_PATH}"
+	chmod -R 775 "${APP_DIR}/app/cache"
+	chmod -R 775 "${APP_DIR}/app/logs"
+	chmod -R 775 "${APP_DIR}/app/import_export"
+}
+
+# Install Oro Application
+app_install ()
+{
+        if [[ ! -d ${SITEDIR_PATH} ]]; then
+            mkdir -p $SITEDIR_PATH
+        fi
+
+        echo "Go to ${APP_DIR}"
+	cd $APP_DIR
+	
+	# If is composer application
+        if [[ -f ${APP_DIR}/composer.json ]]; then
+            echo "Existing composer.json file found! Check composer.lock if exists..."
+            if [[ ! -f ${APP_DIR}/composer.lock ]]; then
+                echo "No composer.lock found, update project dependencies..."
+                composer update --no-interaction --lock -d ${APP_DIR} || error "Can't update lock file"
+            else
+                echo "Composer.lock found! Check Oro application is already installed..."
+            fi
+        else
+            echo "New installation, download Oro application ${ORO_APP} v${ORO_APP_VERSION}..."
+            rmdir $SITEDIR_PATH
+            wget -O crm-application.tar.gz "https://github.com/oroinc/crm-application/releases/download/${ORO_APP_VERSION}/crm-application.tar.gz"
+            tar --strip-components=1 -xzvf crm-application.tar.gz
+            rm -f crm-application.tar.gz
+            
+            sed -i -e "s/database_host:\s127\.0\.0\.1/database_host: db/g" app/config/parameters.yml
+            sed -i -e "s/database_name:\soro_crm/database_name: default/g" app/config/parameters.yml
+            sed -i -e "s/database_user:\sroot/database_user: user/g" app/config/parameters.yml
+            sed -i -e "s/database_password:\snull/database_password: user/g" app/config/parameters.yml
+                    
+            echo "Run composer install..."
+            composer install --no-interaction --prefer-dist --optimize-autoloader -d ${APP_DIR} || error "Can't install dependencies"
+        fi
+        
+        #fix_permissions
+
+        if [[ 0 -eq `cat app/config/parameters.yml | grep ".*installed:\s*[\']\{0,1\}[a-zA-Z0-9\:\+\-]\{1,\}[\']\{0,1\}" | grep -v "null\|false" | wc -l` ]]; then
+            echo "Install Oro Application..."
+            php -dxcache.cacher=0 app/console oro:install --timeout=10000 --drop-database --env=dev --sample-data=y --no-interaction --user-name=admin --user-firstname=John --user-lastname=Doe --user-password="admin" --user-email="johndoe@example.com" --organization-name="Acme" --application-url="http://${VIRTUAL_HOST}/"
+            echo "Installation success! Clear API doc cache..."
+            php -dxcache.cacher=0 app/console oro:api:doc:cache:clear
+        else
+            echo "Oro application is already installed, to force new installation, please set the installed flag to null into parameters.yml"
+            exit 1
+        fi
+}
+
+#-------------------------- END: Functions --------------------------------
+
+#-------------------------- Execution --------------------------------
+
+# Project initialization steps
+time app_install
+
+#-------------------------- END: Execution --------------------------------
