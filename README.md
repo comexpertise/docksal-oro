@@ -1,7 +1,4 @@
-<img src="https://docksal.io/img/docksald.png" alt="Docksal.io" height="25"/>
-<img src="https://cdn4.aoe.com/fileadmin/AOE.com/images/logos/products/OROplatform_color.svg" alt="OroPlatform" height="90"/>
-<img src="https://www.orocommerce.com/wp-content/uploads/sites/3/2017/01/logo-orocommerce-e1440657988810.png" alt="OroCommerce" height="90"/> 
-<img src="https://www.orocrm.com/wp-content/themes/orocrm/images/orocrm_logo.svg" alt="OroCRM" height="24"/>
+<img src="https://docksal.io/img/docksald.png" alt="Docksal.io" height="25"/> <img src="https://cdn4.aoe.com/fileadmin/AOE.com/images/logos/products/OROplatform_color.svg" alt="OroPlatform" height="90"/> <img src="https://www.orocommerce.com/wp-content/uploads/sites/3/2017/01/logo-orocommerce-e1440657988810.png" alt="OroCommerce" height="90"/> <img src="https://www.orocrm.com/wp-content/themes/orocrm/images/orocrm_logo.svg" alt="OroCRM" height="24"/>
 
 ## Notes
 
