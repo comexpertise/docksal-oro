@@ -1,13 +1,20 @@
-## TODO
+<img src="https://docksal.io/img/docksald.png" alt="Docksal.io" height="25"/>
+<img src="https://cdn4.aoe.com/fileadmin/AOE.com/images/logos/products/OROplatform_color.svg" alt="OroPlatform" height="90"/>
+<img src="https://www.orocommerce.com/wp-content/uploads/sites/3/2017/01/logo-orocommerce-e1440657988810.png" alt="OroCommerce" height="90"/> 
+<img src="https://www.orocrm.com/wp-content/themes/orocrm/images/orocrm_logo.svg" alt="OroCRM" height="24"/>
 
-__Currently, only OroCRM application can be installed.__
+## Notes
 
-* Add method for OroCommerce and OroPlatform installations
-* Choose version
+__Currently, only [OroCRM](https://www.orocrm.com) application can be installed.__
+
+#### TODO
+
+* Add method for [OroCommerce](https://www.orocommerce.com) and [OroPlatform](https://www.orocrm.com/oro-platform) installations
+* Choose version for install
 
 # Docksal powered Oro Application Installation
 
-This is a sample vanilla Oro application (OroCRM, OroCommerce or empty OroPlatform) installation pre-configured for use with Docksal.  
+This is a sample vanilla Oro application ([OroCRM](https://www.orocrm.com), [OroCommerce](https://www.orocommerce.com) or empty [OroPlatform](https://www.orocrm.com/oro-platform)) installation pre-configured for use with Docksal.  
 
 Features:
 
@@ -44,7 +51,7 @@ Follow [Docksal environment setup instructions](https://docs.docksal.io/en/maste
 3. Point your browser to
 
     ```
-    http://http://oro-myapp.docksal
+    http://oro-myapp.docksal/app_dev.php
     ```
 
 When the automated install is complete the command line output will display the admin username and password.
@@ -61,3 +68,15 @@ Some common tasks that can be handled by the init script (an other [custom comma
 - import DB or perform a site install
 - compile Sass
 - enable/disable modules, update variables values
+
+# Links:
+
+Documentation:
+
+* https://docs.docksal.io/en/master/
+* https://www.orocrm.com/documentation/2.0/book/installation
+
+Inspirations:
+
+* https://github.com/docksal/drupal8
+* https://github.com/djocker/orobase
