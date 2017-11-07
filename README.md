@@ -1,4 +1,4 @@
-<img src="https://docksal.io/img/docksald.png" alt="Docksal.io" height="25"/> <img src="https://cdn4.aoe.com/fileadmin/AOE.com/images/logos/products/OROplatform_color.svg" alt="OroPlatform" height="90"/> <img src="https://www.orocommerce.com/wp-content/uploads/sites/3/2017/01/logo-orocommerce-e1440657988810.png" alt="OroCommerce" height="90"/> <img src="https://www.orocrm.com/wp-content/themes/orocrm/images/orocrm_logo.svg" alt="OroCRM" height="24"/>
+![OroPlatform](https://img.shields.io/badge/Oro-Platform-green.svg?style=flat-square) ![OroCRM](https://img.shields.io/badge/Oro-CRM-green.svg?style=flat-square) ![OroCommerce](https://img.shields.io/badge/Oro-Commerce-green.svg?style=flat-square)
 
 ## Notes
 
@@ -50,9 +50,10 @@ Follow [Docksal environment setup instructions](https://docs.docksal.io/en/maste
     ```
     http://oro-myapp.docksal/app_dev.php
     ```
-
-When the automated install is complete the command line output will display the admin username and password.
-
+    
+    Login with login/password: __admin/admin__
+    
+4. Add your custom bundle to docroot/src directory. See [How to create new bundle](https://www.orocrm.com/documentation/2.0/cookbook/how-to-create-new-bundle)
 
 ## More automation with 'fin init'
 
