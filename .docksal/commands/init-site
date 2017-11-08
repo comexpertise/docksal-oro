@@ -44,7 +44,7 @@ app_install ()
             echo "New installation, download Oro application ${ORO_APP} v${ORO_APP_VERSION}..."
             rmdir $SITEDIR_PATH
             wget -O crm-application.tar.gz "https://github.com/oroinc/crm-application/releases/download/${ORO_APP_VERSION}/crm-application.tar.gz"
-            tar --strip-components=1 -xzvf crm-application.tar.gz
+            tar --strip-components=1 -xzf crm-application.tar.gz
             rm -f crm-application.tar.gz
             
             sed -i -e "s/database_host:\s127\.0\.0\.1/database_host: db/g" app/config/parameters.yml
