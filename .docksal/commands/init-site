@@ -61,6 +61,7 @@ app_install ()
             sed -i -e "s/database_name:\soro_crm/database_name: default/g" app/config/parameters.yml
             sed -i -e "s/database_user:\sroot/database_user: user/g" app/config/parameters.yml
             sed -i -e "s/database_password:\snull/database_password: user/g" app/config/parameters.yml
+            sed -i -e "s/websocket_bind_address:\s0.0.0.0/websocket_bind_address: 127.0.0.1/g" app/config/parameters.yml
                     
             echo "Run composer install..."
             composer install --no-interaction --prefer-dist --optimize-autoloader -d ${APP_DIR} || error "Can't install dependencies"
