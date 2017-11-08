@@ -55,8 +55,8 @@ sleep 10
 
 # required packages installation
 echo -e "${green_bg} Step 2 ${NC}${green} Required packages installation...${NC}"
-fin exec sudo apt-get update
-fin exec sudo apt-get install -y dialog apt-utils apt-utils php7.0-tidy
+fin exec sudo apt-get -qq update
+fin exec sudo apt-get install -y dialog apt-utils php7.0-tidy
 fin exec sudo apt-get -qq clean && sudo rm -rf /var/lib/apt/lists/*
 fin restart
 
