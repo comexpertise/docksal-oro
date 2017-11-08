@@ -21,16 +21,6 @@ APP_DIR="${SITEDIR_PATH}/.."
 
 #-------------------------- Functions --------------------------------
 
-# Fix file/folder permissions
-fix_permissions ()
-{
-	echo "Making app directory writable..."
-	chmod 755 "${SITEDIR_PATH}"
-	chmod -R 775 "${APP_DIR}/app/cache"
-	chmod -R 775 "${APP_DIR}/app/logs"
-	chmod -R 775 "${APP_DIR}/app/import_export"
-}
-
 # Install Oro Application
 app_install ()
 {
@@ -67,8 +57,6 @@ app_install ()
             composer install --no-interaction --prefer-dist --optimize-autoloader -d ${APP_DIR} || error "Can't install dependencies"
         fi
         
-        #fix_permissions
-
         if [[ 0 -eq `cat app/config/parameters.yml | grep ".*installed:\s*[\']\{0,1\}[a-zA-Z0-9\:\+\-]\{1,\}[\']\{0,1\}" | grep -v "null\|false" | wc -l` ]]; then
             echo "Install Oro Application..."
             php -dxcache.cacher=0 app/console oro:install --timeout=10000 --drop-database --env=dev --sample-data=y --no-interaction --user-name=admin --user-firstname=John --user-lastname=Doe --user-password="admin" --user-email="johndoe@example.com" --organization-name="Acme" --application-url="http://${VIRTUAL_HOST}/"
