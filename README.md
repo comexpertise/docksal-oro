@@ -1,4 +1,4 @@
-![Docksal.io](https://img.shields.io/badge/Docksal-.io-blue.svg?style=flat-square) ![OroPlatform](https://img.shields.io/badge/Oro-Platform-green.svg?style=flat-square) ![OroCRM](https://img.shields.io/badge/Oro-CRM-green.svg?style=flat-square) ![OroCommerce](https://img.shields.io/badge/Oro-Commerce-green.svg?style=flat-square)
+[![Build Status](https://travis-ci.org/comexpertise/docksal-oroplatform.svg?branch=master)](https://travis-ci.org/comexpertise/docksal-oroplatform) ![Docksal.io](https://img.shields.io/badge/Docksal-.io-blue.svg?style=flat-square) ![OroPlatform](https://img.shields.io/badge/Oro-Platform-green.svg?style=flat-square) ![OroCRM](https://img.shields.io/badge/Oro-CRM-green.svg?style=flat-square) ![OroCommerce](https://img.shields.io/badge/Oro-Commerce-green.svg?style=flat-square)
 
 ## Notes
 
